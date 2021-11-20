@@ -9,5 +9,8 @@ var app = module.exports = koa();
  */
 
 app.use(function* () {
-
+  this.response.status = 200;
+  // this.response.length = 11;
+  this.response.type = 'text/plain; charset=utf-8';
+  this.response.body = 'hello world';
 });
