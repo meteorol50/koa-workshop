@@ -12,7 +12,12 @@ var fs = require('fs');
  */
 
 exports.stat = function (filename) {
-
+  return new Promise((resolve, reject) => {
+    fs.stat(filename, (err, stats) => {
+      if (err) {reject(err);}
+      resolve(stats);
+    });
+  });
 };
 
 /**
@@ -32,5 +37,9 @@ exports.stat = function (filename) {
  */
 
 exports.exists = function (filename) {
-
+  return new Promise((resolve, reject) => {
+    fs.exists(filename, (stats) => {
+      resolve(stats);
+    });
+  });
 };
